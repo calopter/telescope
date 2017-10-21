@@ -1,0 +1,22 @@
+{
+  "type": "period-card",
+  "title": "root",
+  "mood": "light",
+  "children": [
+    {"type": "period-card",
+      "title": "node1",
+      "mood": "light",
+      "children":[]
+    },
+    {"type": "period-card",
+      "title": "node2",
+      "mood": "light",
+      "children": []
+    },
+    {"type": "period-card",
+      "title": "node3",
+      "mood": "light",
+      "children":[]
+    }
+  ]
+}
