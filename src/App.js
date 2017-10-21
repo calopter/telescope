@@ -10,17 +10,17 @@ const TreeView = function(treeData) {
 
     return (
         <div className="tree-container">
-          {nodes.map((node, i) =>
-            <Card key={i} 
-              style={{transform: `translate(${node.x}px, ${node.y}px)`}}
-              {...node} />
-          )}
+          {nodes.map(node =>
+            node.data.cards.map((card, i) =>
+              <Card key={i} {...card} />
+            ))}
         </div>
     );
 }
 
-const Card = ({type, title, mood}) =>
-    <section className={type}>
+const Card = ({type, title, mood, x, y}) =>
+    <section className={type} 
+             style={{transform: `translate(${x}px, ${y}px)`}}>  
         <p className="title">{title}</p>
         <div className="mood">{mood}</div>
         <button>remove</button>
@@ -29,7 +29,9 @@ const Card = ({type, title, mood}) =>
 const root = {
     type: "period-card",
     title: "ecce app",
-    mood: "light"
+    mood: "light",
+    x: 100,
+    y: 299
 }
 
 const init = [
@@ -62,7 +64,7 @@ const initTree = {
 
 const App = () =>
     <div className="app">
-        <Card {...root} />
+        <TreeView {...initTree} />
     </div>
 
 export default App
