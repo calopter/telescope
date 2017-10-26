@@ -2,9 +2,9 @@ import React from 'react'
 import * as d3 from 'd3'
 import '../stylesheets/CardTree.css'
 
-const TreeView = function(treeData) {
+const TreeView = (treeData) => {
     const makeTree = d3.tree()
-                       .size([window.scrollHeight, window.scrollWidth])
+                       .size([window.scrollWidth, window.scrollHeight])
                        .nodeSize([184,272]);
     const root = d3.hierarchy(treeData);
     const treeLayout = makeTree(root);

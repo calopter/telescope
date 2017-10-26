@@ -1,3 +1,4 @@
+import v4 from 'uuid'
 import A from './actionTypes'
 
 //for now we will add to children, later create sibs too
@@ -14,11 +15,11 @@ const insert = ({children = [], id, ...node}, action) => {
 }
 
 const remove = ({children, id, ...node}, action) => {
-  if (children.includes(action.card)) {
+  if (children.map(c => c.id).includes(action.id)) {
     return {
       ...node,
       children: children.filter(
-        child => child.id !== action.card.id
+        child => child.id !== action.id
       )}
   } else {
     children.map(child => remove(child, action))
@@ -34,4 +35,22 @@ export const cards = (state = {}, action) => {
     default:
       return state
   }
+}
+
+export const makeAddCard = (targId, type, mood, title) => {
+  return ({ type: A.ADD_CARD,
+    targId: targId,
+    card: { id: v4(),
+            type: type,
+            mood: mood,
+            title: title,
+            children: Array(0)
+    }
+  })
+}
+
+export const makeRemoveCard = id => {
+  return ({ type: A.REMOVE_CARD,
+            id: id
+          })
 }
