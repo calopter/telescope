@@ -1,13 +1,15 @@
 import React from 'react'
-import { cards } from '../actions'
+import { makeAddCard } from '../actions'
+
+import initTree from '../resources/initTree'
 
 let NewCardForm = ({ dispatch }) => {
   let _type, _title, _mood
 
   const submit = e => {
         e.preventDefault()
-        dispatch(_type.value, _title.value, _mood.value)
-        _type.value = 'period-card'
+        dispatch(makeAddCard(initTree.id, _type.value, _mood.value, _title.value))
+        _type.value = 'period'
         _title.value = ''
         _mood.value = 'light'
   }

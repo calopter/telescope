@@ -1,23 +1,23 @@
 {
   "id": "7d8d8aa9-8dbf-4f83-b576-43c89d77d8b4",
-  "type": "period-card",
+  "type": "period",
   "title": "root",
   "mood": "light",
   "children": [
     { "id": "d483661b-d0bf-44c1-823f-b8e077795488",
-      "type": "period-card",
+      "type": "period",
       "title": "node1",
       "mood": "light",
       "children": []
     },
     { "id": "18dfc901-1f25-4c50-b8c4-10af4fa6c54b",
-      "type": "period-card",
+      "type": "period",
       "title": "node2",
       "mood": "light",
       "children": []
     },
     { "id": "491bc971-f514-4583-8ecd-c30f484091dc",
-      "type": "period-card",
+      "type": "period",
       "title": "node3",
       "mood": "light",
       "children": []

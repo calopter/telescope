@@ -1,5 +1,7 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import * as d3 from 'd3'
+import { makeRemoveCard } from '../actions'
 import '../stylesheets/CardTree.css'
 
 const TreeView = (treeData) => {
@@ -18,12 +20,16 @@ const TreeView = (treeData) => {
     );
 }
 
-export const Card = ({data: {type, title, mood}, x, y}) =>
-    <section className={type}
+let Card = ({dispatch, data: {id, type, title, mood}, x, y}) =>
+    <section className={`${type}-card`}
       style={{transform: `translate(${y}px, ${x}px)`}}>
         <p className='title'>{title}</p>
         <div className='mood'>{mood}</div>
-        <button>remove</button>
+        <button onClick={() => dispatch(makeRemoveCard(id))}>
+          [x]
+        </button>
     </section>
+
+Card = connect()(Card)
 
 export default TreeView
