@@ -5,6 +5,7 @@ import A from './actionTypes'
 const insert = ({children = [], id, ...node}, action) => {
   if (id === action.targId) {
     return {
+      id: id,
       ...node,
       children: [...children, action.card]
     }
@@ -14,9 +15,11 @@ const insert = ({children = [], id, ...node}, action) => {
   }
 }
 
+//for now we just remove all children too
 const remove = ({children, id, ...node}, action) => {
   if (children.map(c => c.id).includes(action.id)) {
     return {
+      id: id,
       ...node,
       children: children.filter(
         child => child.id !== action.id
@@ -26,7 +29,7 @@ const remove = ({children, id, ...node}, action) => {
   }
 }
 
-export const cards = (state = {}, action) => {
+export const cards = (state, action) => {
   switch (action.type) {
     case A.ADD_CARD:
       return insert(state, action)

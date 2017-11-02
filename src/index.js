@@ -15,13 +15,13 @@ const store = createStore(cards, initTree)
 console.log(store.getState())
 
 const rootId = initTree.id
-const newCardAction = makeAddCard(rootId, 'period', 'dark', 'newkidd')
+const newCardAction = 
 
-store.dispatch(newCardAction)
-console.log(store.getState())
+//store.dispatch(makeAddCard(rootId, 'period', 'dark', 'newkidd'))
+//console.log(store.getState())
+//store.dispatch(makeAddCard(rootId, 'period', 'dark', 'another'))
 
-const removeCardAction = makeRemoveCard(newCardAction.card.id)
-
+//const removeCardAction = makeRemoveCard(newCardAction.card.id)
 //store.dispatch(removeCardAction)
 //console.log(store.getState())
 
