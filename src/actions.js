@@ -1,8 +1,43 @@
 import v4 from 'uuid'
 import A from './actionTypes'
 
+const children = (state = [], action) => {
+  switch (action.type) {
+    case A.ADD_CARD:
+      return state.reduce((acc, child) => 
+              child.id === action.sibId ? 
+                [...acc, child, action.card] : 
+                [...acc, child])
+    case A.REMOVE_CARD:
+      return state.filter(child => child.id !== action.id)
+  }
+}
+
+const cardTree = (state = {}, action) => {
+  switch (action.type) {
+    case A.ADD_CARD:
+      return state.id === action.parentId ?
+        { ...state,
+          children: children(state.children, action)
+        }
+        :
+        { ...state,
+          children: children.map(child => cardTree(child, action))
+        }
+    case A.REMOVE_CARD:
+      return state.children.map(c => c.id).includes(action.id) ?
+              { ...state,
+                children: children(state.children, action)
+              } 
+              :
+              { ...state,
+                children: children.map(child => cardTree(child, action))
+              }
+  }
+}
+
 //for now we will add to children, later create sibs too
-const insert = ({children = [], id, ...node}, action) => {
+const insert = ({children, id, ...node}, action) => {
   if (id === action.targId) {
     return {
       id: id,
@@ -10,22 +45,29 @@ const insert = ({children = [], id, ...node}, action) => {
       children: [...children, action.card]
     }
   } else {
-    children.map(child =>
-      insert(child, action))
+    return {
+      id: id,
+      children: children.map(child => insert(child, action)),
+      ...node
+    }
   }
 }
 
 //for now we just remove all children too
 const remove = ({children, id, ...node}, action) => {
+  console.log(node)
   if (children.map(c => c.id).includes(action.id)) {
     return {
+      children: children.filter(child => child.id !== action.id),
       id: id,
-      ...node,
-      children: children.filter(
-        child => child.id !== action.id
-      )}
+      ...node
+    }
   } else {
-    children.map(child => remove(child, action))
+    return { 
+      children: children.map(child => remove(child, action)),
+      id: id,
+      ...node
+    }
   }
 }
 

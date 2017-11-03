@@ -8,7 +8,14 @@
       "type": "period",
       "title": "node1",
       "mood": "light",
-      "children": []
+      "children": [
+        {
+          "id": "37a692e8-81f6-443e-bc14-8d2c12406bea",
+          "type": "period",
+          "mood": "dark",
+          "children": []
+        }
+      ]
     },
     { "id": "18dfc901-1f25-4c50-b8c4-10af4fa6c54b",
       "type": "period",

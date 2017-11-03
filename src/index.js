@@ -12,14 +12,13 @@ import './stylesheets/index.css'
 
 const store = createStore(cards, initTree)
 
-console.log(store.getState())
-
 const rootId = initTree.id
-const newCardAction = 
+const childId = initTree.children[0].id
+console.log(childId)
 
 //store.dispatch(makeAddCard(rootId, 'period', 'dark', 'newkidd'))
 //console.log(store.getState())
-//store.dispatch(makeAddCard(rootId, 'period', 'dark', 'another'))
+//store.dispatch(makeAddCard(childId, 'period', 'dark', 'another'))
 
 //const removeCardAction = makeRemoveCard(newCardAction.card.id)
 //store.dispatch(removeCardAction)
