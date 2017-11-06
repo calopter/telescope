@@ -50,7 +50,7 @@ export const cards = (state, action) => {
   }
 }
 
-export const makeAddCard = (type, index, title, mood) => {
+export const makeAddCard = (type, title, mood, parentIndex, index) => {
   switch (type) {
     case 'period':
       return ({ type: A.ADD_PERIOD,
@@ -61,6 +61,7 @@ export const makeAddCard = (type, index, title, mood) => {
     case 'event':
       return({ type: A.ADD_EVENT,
                index: index,
+               parentIndex: parentIndex,
                card: { title: title,
                        mood: mood,
                        scenes: Array(0) }})

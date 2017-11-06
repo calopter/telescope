@@ -8,7 +8,7 @@ const CardList = ({parentIndex, type, cards}) =>
     { cards.map((card, i) => 
         <div key={i} className={`${type}-card-container`}>
           <Card parentIndex={parentIndex} index={i} type={type} {...card}/>
-          <NewCard type={type} index={i+1}/>
+          <NewCard type={type} index={i+1} parentIndex={parentIndex}/>
         </div>
     )}
   </div>

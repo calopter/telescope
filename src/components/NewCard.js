@@ -14,10 +14,10 @@ class NewCardForm extends React.Component {
   }
 
   submit(e) {
-    const { dispatch, type, index } = this.props
+    const { dispatch, type, index, parentIndex } = this.props
     const { mood, title } = this.state
     e.preventDefault()
-    const action = makeAddCard(type, index, title, mood)
+    const action = makeAddCard(type, title, mood, parentIndex, index)
     console.log(action)
     dispatch(action)
     this.setState({visible: false})
