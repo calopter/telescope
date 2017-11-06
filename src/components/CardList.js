@@ -1,14 +1,15 @@
 import React from 'react'
 import Card from './Card'
+import NewCard from './NewCard'
 import '../stylesheets/CardList.css'
 
 const CardList = ({type, cards}) => 
   <div className={`${type}-card-list`}>
+    <NewCard type={type} index={0}/>
     { cards.map((card, i) => 
-        <div key={i} className='card-list-element'>
-          <Card type={type} {...card}/>
-        </div>
+        <Card key={i} index={i} type={type} {...card}/>
     )}
+    <NewCard type={type} index={cards.length-1}/>
   </div>
 
 export default CardList

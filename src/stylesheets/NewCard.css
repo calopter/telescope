@@ -1,0 +1,10 @@
+div.add-card {
+  width: 10px;
+  border: 2px;
+}
+
+form.new-card {
+  padding: 20px;
+  float: left;
+  position: relative;
+}

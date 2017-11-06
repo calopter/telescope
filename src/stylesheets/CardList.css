@@ -3,6 +3,10 @@ div.period-card-list {
   justify-content: center;
 }
 
+span {
+  display: inline-block;
+}
+
 div.card-list-element {
-  display: flex;
+  display: inline;
 }

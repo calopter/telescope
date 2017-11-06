@@ -1,4 +1,8 @@
-.period-card {
+div.card {
+  display: flex;
+}
+
+div.period-card {
   display: inline-block;
   width: 80px;
   height: 140px;
@@ -7,6 +11,6 @@
   transition: 0.3s;
 }
 
-.period-card:hover {
+div.period-card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 }

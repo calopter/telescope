@@ -17,9 +17,10 @@ class CardComponent extends React.Component {
   }
   
   render() {
-    const { dispatch, key, type, title, mood } = this.props
+    const { dispatch, index, type, title, mood } = this.props
     return (
-      <div>
+      <div className='card'>
+        <NewCard type={type} index={index}/>
         <div className={`${type}-card`}
              onClick={() => this.setState({childrenVisible: !this.state.childrenVisible})}> 
           <p className='title'>{title}</p>
@@ -28,7 +29,6 @@ class CardComponent extends React.Component {
             [x]
           </button>
        </div>
-       <NewCard type={type} index={key}/>
      </div>
     )
   }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { makeAddCard } from '../actions'
+import '../stylesheets/NewCard.css'
 
 class NewCardForm extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class NewCardForm extends React.Component {
     const { mood, title } = this.state
     e.preventDefault()
     const action = makeAddCard(type, index, title, mood)
+    console.log(action)
     dispatch(action)
     this.setState({visible: false})
   }                                              
@@ -47,11 +49,15 @@ class NewCardForm extends React.Component {
                checked={mood}
                onChange={update} />
         <input type='submit' value='Add Card'/>
+        <button onClick={() => this.setState({visible: false})}>
+          x
+        </button>
       </form>
     )
     return (
       visible ? form : 
-      <span onClick={() => this.setState({visible: true})}>add card...</span>
+      <div className='add-card' 
+           onClick={() => this.setState({visible: true})}/>
     )
   }
 }
