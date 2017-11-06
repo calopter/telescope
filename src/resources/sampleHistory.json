@@ -1,0 +1,76 @@
+{
+  "periodcards": [
+    { "title": "allfather creates mortal world",
+      "mood": true,
+      "events": []
+    },
+    { "title": "gods war against the colossi",
+      "mood": false,
+      "events": [
+        { "title": "dwarven king sells his people into slavery to gods",
+          "mood": false,
+          "scenes": []
+        },
+        { "title": "crow discovers the well of fate",
+          "mood": false,
+          "scenes": []
+        },
+        { "title": "allfather creates men to fight the colossi",
+          "mood": true,
+          "scenes": []
+        }
+      ]
+    },
+    { "title": "century of winter",
+      "mood": false,
+      "events": [
+        { "title": "dark elves cast out, wander in winter",
+          "mood": false,
+          "scenes": []
+        },
+        { "title": "dwarves teach dark elves, defying gods",
+          "mood": true,
+          "scenes": []
+        }
+      ]
+    },
+    { "title": "heroes of the seven kings",
+      "mood": true,
+      "events": [
+        { "title": "goorash saves svetka from black beast",
+          "mood": true,
+          "scenes": []
+        },
+        { "title": "marriage of svetka interrupted",
+          "mood": false,
+          "scenes": []
+        },
+        { "title": "goorash wins sword of storms",
+          "mood": true,
+          "scenes": []
+        },
+        { "title": "svetka mourns death of goorash",
+          "mood": false,
+          "scenes": []
+        }
+      ]
+    },
+    { "title": "flourishing kingdoms of men",
+      "mood": true,
+      "events": [
+        { "title": "dwarven outcast visits well of fate",
+          "mood": false,
+          "scenes": []
+        },
+        { "title": "allfather hides last flame, reveals plans to crow",
+          "mood": true,
+          "scenes": []
+        }
+      ]
+    },
+    { "title": "death of the gods",
+      "mood": false,
+      "events": []
+    }
+  ]
+}
