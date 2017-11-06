@@ -7,8 +7,25 @@ const insert = (state, action) => {
          ]
 }
 
-const remove = (state, action) => {
-  return state.filter(card => card.title !== action.title)
+const remove = (state, action) => 
+  state.filter(card => card.title !== action.title)
+
+const updateByIndex = (state, action, index, reducer) => {
+  return [...state.slice(0, index),
+          reducer(state[index], action),
+          ...state.slice(index+1)
+         ]
+}
+
+const events = (state, action) => {
+  switch (action.type) {
+    case A.ADD_EVENT:
+      return {...state, events: insert(state.events, action)}
+    case A.REMOVE_EVENT:
+      return {...state, events: remove(state.events, action)}
+    default:
+      return state
+  }
 }
 
 export const cards = (state, action) => {
@@ -18,11 +35,10 @@ export const cards = (state, action) => {
     case A.REMOVE_PERIOD:
       return {...state, periodcards: remove(state.periodcards, action)}
     case A.ADD_EVENT:
-      return state
-      //return insert(state.periodcards[action.index].events, action)
+      return {...state, periodcards: updateByIndex(state.periodcards, action, action.parentIndex, events)}
     case A.REMOVE_EVENT:
-      return state
-      //return remove(state.periodcards[action.index].events, action)
+      return {...state, periodcards: updateByIndex(state.periodcards, action, action.parentIndex, events)}
+      //shouldn't test for add/remove here and in events()
     case A.ADD_SCENE: 
       //figure out how to best walk state to relevant period->event->scenes array
       //then call to insert/remove with that
@@ -53,12 +69,14 @@ export const makeAddCard = (type, index, title, mood) => {
   }
 }
 
-export const makeRemoveCard = (type, title) => {
+export const makeRemoveCard = (type, title, parentIndex, index) => {
   switch (type) {
     case 'period':
       return({type: A.REMOVE_PERIOD, title: title})
     case 'event':
-      return({type: A.REMOVE_EVENT, title: title})
+      const a = ({type: A.REMOVE_EVENT, title: title, parentIndex: parentIndex})
+      console.log(a)
+      return a
     default:
       return null
   }

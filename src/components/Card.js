@@ -16,20 +16,22 @@ class CardComponent extends React.Component {
   }
   
   render() {
-    const { dispatch, type, title, mood } = this.props
+    const { dispatch, index, parentIndex, type, title, mood } = this.props
     return (
         <div className='card'>
           <div className={`${type}-card`}
                onClick={() => this.setState({childrenVisible: !this.state.childrenVisible})}> 
             <p className='title'>{title}</p>
             <div className='mood'>{mood.toString()}</div>
-            <button onClick={() => dispatch(makeRemoveCard(type, title))}>
+            <button onClick={() => dispatch(makeRemoveCard(type, title, parentIndex, index))}>
               [x]
             </button>
         </div>
        { this.state.childrenVisible ? 
          <div className={`${type}-children-list`}>
-            <CardList type={this.childType()} cards={this.props[this.childType()+'s']} />
+            <CardList type={this.childType()} 
+                      cards={this.props[this.childType()+'s']}
+                      parentIndex={index}/>
          </div> : null
        }
        </div>
