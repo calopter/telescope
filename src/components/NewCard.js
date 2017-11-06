@@ -57,7 +57,8 @@ class NewCardForm extends React.Component {
     return (
       visible ? form : 
       <div className='add-card' 
-           onClick={() => this.setState({visible: true})}/>
+           onClick={() => this.setState({visible: true})}>
+      add</div>
     )
   }
 }

@@ -1,7 +1,8 @@
 div.add-card {
-  width: 10px;
-  border: 2px;
+  flex-grow: 1;
+  align-self: stretch;
 }
+
 
 form.new-card {
   padding: 20px;

@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { makeRemoveCard } from '../actions'
-import NewCard from './NewCard'
-//import CardList from './CardList'
+import CardList from './CardList'
 import '../stylesheets/Card.css'
 
 class CardComponent extends React.Component {
@@ -17,29 +16,26 @@ class CardComponent extends React.Component {
   }
   
   render() {
-    const { dispatch, index, type, title, mood } = this.props
+    const { dispatch, type, title, mood } = this.props
     return (
-      <div className='card'>
-        <NewCard type={type} index={index}/>
-        <div className={`${type}-card`}
-             onClick={() => this.setState({childrenVisible: !this.state.childrenVisible})}> 
-          <p className='title'>{title}</p>
-          <div className='mood'>{mood.toString()}</div>
-          <button onClick={() => dispatch(makeRemoveCard(type, title))}>
-            [x]
-          </button>
+        <div className='card'>
+          <div className={`${type}-card`}
+               onClick={() => this.setState({childrenVisible: !this.state.childrenVisible})}> 
+            <p className='title'>{title}</p>
+            <div className='mood'>{mood.toString()}</div>
+            <button onClick={() => dispatch(makeRemoveCard(type, title))}>
+              [x]
+            </button>
+        </div>
+       { this.state.childrenVisible ? 
+         <div className={`${type}-children-list`}>
+            <CardList type={this.childType()} cards={this.props[this.childType()+'s']} />
+         </div> : null
+       }
        </div>
-     </div>
     )
   }
 }
-/*
-          { this.state.childrenVisible ? 
-            <div className={`${type}-children-list`}>
-              <CardList type={this.childType()} {...children} />
-            </div> : null
-          }
-*/        
  
 const Card = connect()(CardComponent)
 

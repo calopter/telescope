@@ -1,10 +1,5 @@
 div.period-card-list {
   display: flex;
-  justify-content: center;
-}
-
-span {
-  display: inline-block;
 }
 
 div.card-list-element {
