@@ -1,12 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import CardTree from './CardTree'
+import CardList from './CardList'
 
-const Cards = connect(state => state)(CardTree)
+const PeriodCards = 
+  connect(state => ({ type: 'period',
+                      cards: state.periodcards}))(CardList)
 
-const App = () =>
-  <div className='app'>
-    <Cards/>
-  </div>
+const App = () => <PeriodCards/>
 
 export default App
